@@ -1,0 +1,58 @@
+{
+	"title"  : "Koda Media Editor",
+	"fields" : [
+		{
+			"id" : "_koda_type",
+			"defaultValue" : "/koda/koda-types/koda-media.json"
+		},	
+		{
+			"id" : "_koda_editor",
+			"defaultValue" : "/koda/koda-editors/generic-editor.html"
+		},
+		{
+			"id" : "_koda_indexes",
+			"defaultValue" : "name,tags"
+		},
+		{
+			"id" : "datecreated",
+			"defaultValue" : "<%=timestamp%>"
+		},
+		{
+			"id" : "name",
+			"title" : "Name",
+			"description" : "The name of the image",
+			"control" : "input-text",
+			"properties" : "required",
+			"defaultValue" : ""
+		},
+		{
+			"id" : "alias",
+			"title" : "Alias",
+			"description" : "This will be generated from the title",
+			"control" : "input-readonly",
+			"defaultValue" : ""
+		},
+		{
+			"id" : "mime_type",
+			"title" : "Mime Type",
+			"description" : "Pick the type of file to upload",
+			"control" : "collection",
+			"values" : "application/pdf,application/zip, application/gzip,image/gif,image/jpeg,image/png,audio/mpeg,audio/ogg,video/mpeg,video/mp4,video/x-flv",
+			"defaultValue" : "image/png"
+		},
+		{
+			"id" : "media_file",
+			"title" : "File to upload",
+			"description" : "The media file to upload",
+			"control" : "mediaupload",
+			"defaultValue" : ""
+		},
+		{
+			"id" : "tags",
+			"title" : "Tags",
+			"description" : "Comma separated",
+			"control" : "input-text",
+			"defaultValue" : ""
+		}
+	]
+}

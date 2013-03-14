@@ -1,0 +1,50 @@
+{
+	"title"  : "Generic Text Editor",
+	"fields" : [
+		{
+			"id" : "_koda_type",
+			"defaultValue" : "/koda/koda-types/koda-generictext.json"
+		},	
+		{
+			"id" : "_koda_editor",
+			"defaultValue" : "/koda/koda-editors/generic-editor.html"
+		},
+		{
+			"id" : "_koda_indexes",
+			"defaultValue" : "name,tags"
+		},
+		{
+			"id" : "datecreated",
+			"defaultValue" : "<%=timestamp%>"
+		},
+		{
+			"id" : "name",
+			"title" : "Name",
+			"description" : "The name of the content",
+			"control" : "input-text",
+			"defaultValue" : "",
+			"properties" : "required"
+		},
+		{
+			"id" : "alias",
+			"title" : "Alias",
+			"description" : "This will be generated from the title",
+			"control" : "input-readonly",
+			"defaultValue" : ""
+		},
+		{
+			"id" : "content",
+			"title" : "Content",
+			"description" : "The contents",
+			"control" : "richtext",
+			"defaultValue" : ""
+		},
+		{
+			"id" : "tags",
+			"title" : "Tags",
+			"description" : "Comma separated",
+			"control" : "input-text",
+			"defaultValue" : ""
+		}
+	]
+}

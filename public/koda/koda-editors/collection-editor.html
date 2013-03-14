@@ -1,0 +1,56 @@
+<html>
+<head>
+	<link rel="stylesheet" href="/admin/koda/css/bootstrap.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="koda-editor.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="generic-editor.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="/admin/koda/css/bootstrap-responsive.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<script src="/admin/koda/scripts/plugins/json2.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/admin/koda/scripts/plugins/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/admin/koda/scripts/plugins/nicEdit.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/admin/koda/scripts/plugins/spin.js" type="text/javascript"></script>
+	<script src="KodaEditor.js?1133" type="text/javascript" charset="utf-8"></script>
+	<script src="/admin/koda/scripts/plugins/fileuploader.js?234234a7aa6d4aa" type="text/javascript"></script>
+</head>
+<body>
+	<div id="editor"></div>
+<script>
+	
+	(function() {
+		
+		var api = Editor.Api;		
+		var isNew = api.isNew;
+		
+		api.get('/admin/koda/koda-types/koda-collection.json', function(kodaType) {
+			var onSubmit = function(data) {
+				var newItem = data.name.replace(/ /g,"-");
+				var url = PathHelper.getPath(newItem);
+				api.post(url, '{"alias":"_delete"}', function(sdata) {
+
+					if(sdata == "OK") {					
+						api.delete(url + "/_delete", function(ddata) {
+							if(ddata == "OK"){
+								$('#status').text("Folder Saved!");
+								$('#status').show().fadeOut(2000);					
+							}
+						});					
+					} else {				
+						$('#status').text(ddata.error);
+						$('#status').show().fadeOut(2000);
+					}
+
+				});
+			}
+
+			var kodaForm = Editor.Form($('#editor'), kodaType, onSubmit);
+			kodaForm.load({name:api.itemUrl});
+			if(!isNew) {
+				$('#status').text('Renaming a collection can cause unforeseen consequences. Save disabled.').show();
+				$('button[type="submit"]').attr("disabled", true);
+			}
+		});
+
+	})();
+	
+</script>
+</body>
+<html>
