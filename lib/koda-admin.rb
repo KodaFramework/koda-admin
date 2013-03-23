@@ -1,5 +1,5 @@
 require 'sinatra/base'
-require_relative './koda-admin/helpers/view_helper'
+require 'koda-admin/helpers/view_helper'
 
 module Koda
   class Admin < Sinatra::Base

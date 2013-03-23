@@ -1,7 +1,3 @@
-require 'json'
-require 'dalli'
-require 'uri'
-require 'rest_client'
 
 module ViewHelper
 
